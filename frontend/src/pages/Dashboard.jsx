@@ -39,15 +39,15 @@ export default function Dashboard({ setIsAuthenticated }) {
         const mergedTasks = [...items, ...completedTasks];
         setTasks(mergedTasks);
 
-        // try {
-        //     await API.post(
-        //         "/tasks/reorder",
-        //         items.map((task) => task.id)
-        //     );
-        // } catch {
-        //     alert("Failed to reorder tasks");
-        //     fetchTasks();
-        // }
+        try {
+            await API.post(
+                "/tasks/reorder",
+                items.map((task) => task.id)
+            );
+        } catch {
+            alert("Failed to reorder tasks");
+            fetchTasks();
+        }
     };
 
     const handleSubmit = async (e) => {

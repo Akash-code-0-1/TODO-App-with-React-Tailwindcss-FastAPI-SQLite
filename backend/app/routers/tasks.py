@@ -82,16 +82,23 @@ def delete_task(task_id: int, db: Session = Depends(database.get_db)
     return {"message": "Task deleted"}
 
 
-# @router.post("/reorder")
-# def reorder_tasks(orders: List[int], db: Session = Depends(database.get_db)
-# , current_user: models.User = Depends(get_current_user)):
-#     tasks = db.query(models.Task).filter(models.Task.owner_id == current_user.id).all()
-#     id_to_task = {task.id: task for task in tasks}
-    
-#     if set(orders) != set(id_to_task.keys()):
-#         raise HTTPException(status_code=400, detail="Invalid task IDs")
+@router.post("/reorder")
+def reorder_tasks(
+    orders: List[int] = Body(...),
+    db: Session = Depends(database.get_db),
+    current_user: models.User = Depends(get_current_user)
+):
+    tasks = db.query(models.Task).filter(models.Task.owner_id == current_user.id).all()
+    id_to_task = {task.id: task for task in tasks}
 
-#     for idx, task_id in enumerate(orders):
-#         id_to_task[task_id].order = idx
-#     db.commit()
-#     return {"message": "Tasks reordered"}
+    # ✅ Validate only the incoming task IDs
+    for task_id in orders:
+        if task_id not in id_to_task:
+            raise HTTPException(status_code=400, detail=f"Invalid task ID: {task_id}")
+
+    # ✅ Reorder only the tasks in the `orders` list
+    for idx, task_id in enumerate(orders):
+        id_to_task[task_id].order = idx
+
+    db.commit()
+    return {"message": "Tasks reordered"}
