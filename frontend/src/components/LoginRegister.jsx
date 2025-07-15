@@ -21,7 +21,7 @@ export default function LoginRegister({ setIsAuthenticated }) {
                 const res = await API.post(
                     "/login",
                     new URLSearchParams({
-                        username: form.email,     // FastAPI expects 'username' field, even if it's email
+                        username: form.email,
                         password: form.password,
                     }),
                     {
@@ -34,9 +34,7 @@ export default function LoginRegister({ setIsAuthenticated }) {
                 console.log("Login success:", res.data);
                 localStorage.setItem("token", res.data.access_token);
                 setIsAuthenticated(true);
-            }
-            else {
-                // ✅ Register mode — use normal JSON
+            } else {
                 const res = await API.post("/register", {
                     username: form.username,
                     email: form.email,
@@ -49,82 +47,80 @@ export default function LoginRegister({ setIsAuthenticated }) {
         } catch (err) {
             console.error("Registration/login error:", err);
             alert(
-                JSON.stringify(
-                    err.response?.data || { error: "Unknown error" },
-                    null,
-                )
+                JSON.stringify(err.response?.data || { error: "Unknown error" }, null)
             );
         } finally {
             setLoading(false);
         }
     };
 
-
     return (
-        <div className="max-w-md mx-auto mt-20 bg-white p-6 rounded shadow">
-            <h2 className="text-2xl font-bold mb-6 text-center">
-                {isLogin ? "Login" : "Register"}
-            </h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-                {!isLogin && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4">
+            <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
+                <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+                    {isLogin ? "Login to Your Account" : "Create an Account"}
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    {!isLogin && (
+                        <input
+                            type="text"
+                            placeholder="Username"
+                            value={form.username}
+                            onChange={(e) => setForm({ ...form, username: e.target.value })}
+                            required
+                            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    )}
                     <input
-                        type="text"
-                        placeholder="Username"
-                        value={form.username}
-                        onChange={(e) => setForm({ ...form, username: e.target.value })}
+                        type="email"
+                        placeholder="Email"
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
                         required
-                        className="w-full px-3 py-2 border rounded"
+                        className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
-                )}
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    required
-                    className="w-full px-3 py-2 border rounded"
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={form.password}
-                    onChange={(e) => setForm({ ...form, password: e.target.value })}
-                    required
-                    className="w-full px-3 py-2 border rounded"
-                />
-                <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
-                >
-                    {loading ? "Please wait..." : isLogin ? "Login" : "Register"}
-                </button>
-            </form>
-            <p className="mt-4 text-center text-sm text-gray-600">
-                {isLogin ? (
-                    <>
-                        Don't have an account?{" "}
-                        <button
-                            onClick={toggleForm}
-                            className="text-blue-600 hover:underline"
-                            type="button"
-                        >
-                            Register here
-                        </button>
-                    </>
-                ) : (
-                    <>
-                        Already have an account?{" "}
-                        <button
-                            onClick={toggleForm}
-                            className="text-blue-600 hover:underline"
-                            type="button"
-                        >
-                            Login here
-                        </button>
-                    </>
-                )}
-            </p>
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={form.password}
+                        onChange={(e) => setForm({ ...form, password: e.target.value })}
+                        required
+                        className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    <button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition duration-200"
+                    >
+                        {loading ? "Please wait..." : isLogin ? "Login" : "Register"}
+                    </button>
+                </form>
+                <p className="mt-6 text-center text-sm text-gray-600">
+                    {isLogin ? (
+                        <>
+                            Don't have an account?{" "}
+                            <button
+                                onClick={toggleForm}
+                                className="text-blue-600 hover:underline font-medium"
+                                type="button"
+                            >
+                                Register here
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            Already have an account?{" "}
+                            <button
+                                onClick={toggleForm}
+                                className="text-blue-600 hover:underline font-medium"
+                                type="button"
+                            >
+                                Login here
+                            </button>
+                        </>
+                    )}
+                </p>
+            </div>
         </div>
     );
 }
