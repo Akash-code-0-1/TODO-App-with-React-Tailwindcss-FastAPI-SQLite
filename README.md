@@ -4,12 +4,23 @@
 
 ---
 
-## 📸 Screenshots
+## 📸 Video && Screenshots
 
-> ![](./screenshots/1.png)  
-> ![](./screenshots/2.png)  
-> ![](./screenshots/3.png)  
-> ![](./screenshots/4.png)
+▶️ [Watch Demo Video](https://www.youtube.com/watch?v=dO4SlTO9Qtk)
+
+
+> ![](https://github.com/Akash-code-0-1/TODO-App-with-React-Tailwindcss-FastAPI-SQLite/blob/main/frontend/src/project_output/1.PNG) 
+> ![](https://github.com/Akash-code-0-1/TODO-App-with-React-Tailwindcss-FastAPI-SQLite/blob/main/frontend/src/project_output/2.PNG)  
+> ![](https://github.com/Akash-code-0-1/TODO-App-with-React-Tailwindcss-FastAPI-SQLite/blob/main/frontend/src/project_output/3.PNG) 
+> ![](https://github.com/Akash-code-0-1/TODO-App-with-React-Tailwindcss-FastAPI-SQLite/blob/main/frontend/src/project_output/4.PNG)  
+> ![](https://github.com/Akash-code-0-1/TODO-App-with-React-Tailwindcss-FastAPI-SQLite/blob/main/frontend/src/project_output/5.PNG) 
+> ![](https://github.com/Akash-code-0-1/TODO-App-with-React-Tailwindcss-FastAPI-SQLite/blob/main/frontend/src/project_output/6.PNG)  
+> ![](https://github.com/Akash-code-0-1/TODO-App-with-React-Tailwindcss-FastAPI-SQLite/blob/main/frontend/src/project_output/7.PNG) 
+> ![](https://github.com/Akash-code-0-1/TODO-App-with-React-Tailwindcss-FastAPI-SQLite/blob/main/frontend/src/project_output/8.PNG)  
+> ![](https://github.com/Akash-code-0-1/TODO-App-with-React-Tailwindcss-FastAPI-SQLite/blob/main/frontend/src/project_output/9.PNG) 
+> ![](https://github.com/Akash-code-0-1/TODO-App-with-React-Tailwindcss-FastAPI-SQLite/blob/main/frontend/src/project_output/10.PNG)  
+> ![](https://github.com/Akash-code-0-1/TODO-App-with-React-Tailwindcss-FastAPI-SQLite/blob/main/frontend/src/project_output/11.PNG) 
+> ![](https://github.com/Akash-code-0-1/TODO-App-with-React-Tailwindcss-FastAPI-SQLite/blob/main/frontend/src/project_output/12.PNG)  
 
 
 ---
